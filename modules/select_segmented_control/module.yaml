@@ -1,0 +1,16 @@
+select_segmented_control:
+  name: Select Segmented Control
+  version: '1.0'
+  creator: FeliGoblin
+  supported:
+    - select
+  description: |
+    <h2>Select Segmented Control</h2>
+    <p>
+      Transforms Select buttons into an animated full-width segmented (or "pill") control.<br>
+      It has many customisation options such as changing colours, text, shape, speed, and even adding additional actions to trigger.<br>
+    </p>
+    <br>
+    <p>
+      For bottom sub-buttons I recommend a row height of 1.85, and Limit Button Height enabled.<br>
+    </p>

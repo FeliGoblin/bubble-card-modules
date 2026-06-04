@@ -1,0 +1,90 @@
+.bubble-container {
+  overflow: hidden;
+  border-radius: ${this.config.select_segmented_control?.other?.card_radius || ''}px !important;
+  --ssc-background: ${this.config.select_segmented_control?.other?.card_color || '' };
+  --ssc-text-transform: ${this.config.select_segmented_control?.global?.text_transform || 'none'};
+  --ssc-native-height: calc(var(--row-height, 56px) * var(--row-size, 1) + var(--row-gap, 8px) * (var(--row-size, 1) - 1));
+  --ssc-height: 
+      ${this.config.select_segmented_control?.other?.limit_button_height ? 
+        'min(var(--row-height, 56px), ' : 
+        'calc('
+      }
+    var(--ssc-native-height));
+  --ssc-radius: 
+      ${this.config.select_segmented_control?.other?.button_radius == null
+        ? 'var(--bubble-select-border-radius, var(--bubble-border-radius, calc(var(--ssc-height) / 2)))'
+        : `${this.config.select_segmented_control.other.button_radius}px`}
+}
+
+.bubble-background,
+.bubble-content-container,
+.bubble-buttons-container,
+.bubble-dropdown-inner-border {display: none;}
+.bubble-sub-button-container {width: 100%;}
+.bubble-sub-button-group {z-index: 2;}
+
+.ssc-button-container {
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  height: var(--ssc-height);
+  border-radius: var(--ssc-radius);
+  background: var(--ssc-background);
+}
+
+.ssc-button {
+  flex-grow: 1;
+  opacity: 0.6;
+  line-height: var(--ssc-height);
+  font-size: var(--ha-font-size-m);
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+  position: relative;
+  text-transform: var(--ssc-text-transform);
+  transition: color var(--ssc-anim-speed), opacity var(--ssc-anim-speed);
+  color: var(--primary-text-color, inherit);
+}
+
+.ssc-button[selected] ha-icon,
+.ssc-button[selected] {opacity: 1;}
+
+.ssc-button:hover {
+  background: 
+    color-mix(
+      in oklab, 
+      var(--md-ripple-hover-color, 
+        var(--ha-ripple-hover-color, 
+          var(--ha-ripple-color,
+            var(--secondary-text-color)
+          )
+        )
+      ) 3%, 
+      transparent
+    );
+}
+
+.bubble-icon {
+  width: var(--mdc-icon-size, 24px);
+  margin-right: 5px;
+  color: var(--primary-text-color, inherit);
+  transition: color var(--ssc-anim-speed);
+}
+
+.ssc-pill {
+  background: 
+    var(--bubble-button-accent-color, 
+    var(--bubble-accent-color, 
+    var(--bubble-default-color)));
+  height: var(--ssc-height);
+  position: absolute;
+  top: 0px;
+  z-index: 0; 
+  transition: 
+    left var(--ssc-anim-speed), 
+    width var(--ssc-anim-speed), 
+    background var(--ssc-anim-speed);
+}
+
+.ssc-button, .ssc-pill {border-radius: var(--ssc-radius);}

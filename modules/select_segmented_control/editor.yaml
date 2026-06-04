@@ -1,0 +1,157 @@
+editor:
+  - type: grid
+    name: other
+    schema:
+      - name: card_radius
+        label: Card Border Radius
+        selector:
+          number:
+            step: 1
+            unit_of_measurement: px
+            mode: box
+      - name: button_radius
+        label: Button Border Radius
+        selector:
+          number:
+            step: 1
+            unit_of_measurement: px
+            mode: box
+      - name: card_color
+        label: Background Color
+        default: 'eg. #ff00ff'
+        selector:
+          text: {}
+      - name: animation_speed
+        label: Animation Speed
+        selector:
+          number:
+            min: 0
+            max: 2
+            step: 0.1
+            unit_of_measurement: s
+            mode: box
+        default: 0.2
+      - name: limit_button_height
+        label: Limit Button Height
+        selector:
+          boolean: {}
+  - type: expandable
+    name: global
+    title: "Global Button Options"
+    expanded: false
+    schema:
+      - name: text_transform
+        label: Text Transform
+        selector:
+          select:
+            options:
+              - label: Capitalize
+                value: capitalize
+              - label: Uppercase
+                value: uppercase
+              - label: Lowercase
+                value: lowercase
+            multiple: false
+            custom_value: false
+            mode: dropdown
+      - name: selected_color
+        label: Selected Color
+        default: 'eg. #ff00ff'
+        selector:
+          text: {}
+      - name: color
+        label: Text Color
+        default: 'eg. #ff00ff'
+        selector:
+          text: {}
+      - name: color_on
+        label: Selected Text Color
+        default: 'eg. #ff00ff'
+        selector:
+          text: {}
+      - name: icon
+        label: Icon
+        selector:
+          icon: {}
+      - name: icon_on
+        label: Selected Icon
+        description: Show a different icon when selected.
+        selector:
+          icon: {}
+      - name: icon_color
+        label: Icon Color
+        default: 'eg. #ff00ff'
+        selector:
+          text: {}
+      - name: icon_on_color
+        label: Selected Icon Color
+        default: 'eg. #ff00ff'
+        selector:
+          text: {}
+  - type: expandable
+    name: local
+    title: "Individual Button Options"
+    expanded: false
+    schema:
+      - name: customs
+        label: Buttons
+        selector:
+          object:
+            fields:
+              index:
+                label: Button Number
+                required: true
+                description: 1 = first button, 2 = second button, 3 = third, etc.
+                selector:
+                  number:
+                    min: 1
+                    max: 50
+                    step: 1
+                    mode: box
+              name:
+                label: Name
+                description: Enter a single space to hide the name.
+                selector:
+                  text: {}
+              selected_color:
+                label: Selected Color
+                description: 'eg. #ff00ff'
+                selector:
+                  text: {}
+              color:
+                label: Text Color
+                selector:
+                  text: {}
+              color_on:
+                label: Selected Text Color
+                selector:
+                  text: {}
+              icon:
+                label: Icon
+                selector:
+                  icon: {}
+              icon_on:
+                label: Selected Icon
+                description: Show a different icon when selected.
+                selector:
+                  icon: {}
+              icon_color:
+                label: Icon Color
+                selector:
+                  text: {}
+              icon_on_color:
+                label: Selected Icon Color
+                selector:
+                  text: {}
+              tap_action:
+                label: Custom Actions
+                selector:
+                  action: {}
+              action_every_click:
+                label: Trigger Actions on Every Click
+                description: Trigger custom actions even when this button option is already selected.
+                selector:
+                  boolean: {}
+            label_field: index
+            description_field: name
+            multiple: true
